@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="lfw_.png" type="image/x-icon" />
+    <title>Presidential Something</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="form-header">
+        <div class="logo"><img src="lfw_.png" alt="" width="50px" /></div>
+        <p class="subtitle">
+          PLEASE COMPLETE THE FORM TO GET ACCESS TO THE PRESIDENTIAL BRIEFING
+        </p>
+      </div>
+
+      <form id="registrationForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lastName"
+              >Last Name <span class="required">*</span></label
+            >
+            <input type="text" id="lastName" name="lastName" required />
+            <div class="error-message">Last name is required</div>
+          </div>
+          <div class="form-group">
+            <label for="firstName"
+              >First Name <span class="required">*</span></label
+            >
+            <input type="text" id="firstName" name="firstName" required />
+            <div class="error-message">First name is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email"
+            >Email Address <span class="required">*</span></label
+          >
+          <input type="email" id="email" name="email" required />
+          <div class="error-message">Please enter a valid email address</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phoneNumber"
+              >Phone Number <span class="required">*</span></label
+            >
+            <input type="tel" id="phoneNumber" name="phoneNumber" required />
+            <div class="error-message">Phone number is required</div>
+          </div>
+          <div class="form-group">
+            <label for="yearOfEntry"
+              >Year of Entry <span class="required">*</span></label
+            >
+            <input
+              type="number"
+              id="yearOfEntry"
+              name="yearOfEntry"
+              min="1100"
+              max="2025"
+              required
+            />
+            <div class="error-message">Please enter a valid year</div>
+          </div>
+        </div>
+
+        <div class="form-group status-dropdown">
+          <label for="status">Status <span class="required">*</span></label>
+          <select
+            id="status"
+            name="status"
+            required
+            onclick="handleStatusClick()"
+          >
+            <option value="">Select Status</option>
+            <option value="active">RP</option>
+            <option value="inactive">ARP</option>
+            <option value="pending">SP</option>
+            <option value="suspended">PIC</option>
+            <option value="retired">NMISP</option>
+            <option value="trainee">PART TIME</option>
+          </select>
+          <div class="error-message">Please select a status</div>
+        </div>
+
+        <div class="form-group">
+          <label for="station">Station <span class="required">*</span></label>
+          <input
+            type="text"
+            id="station"
+            name="station"
+            placeholder="Enter your station/department"
+            required
+          />
+          <div class="error-message">Station is required</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="country">Country <span class="required">*</span></label>
+            <select
+              id="country"
+              name="country"
+              required
+              onchange="updateStates()"
+            >
+              <option value="">Select Country</option>
+              <option value="ng">United States</option>
+              <option value="ca">Canada</option>
+              <option value="uk">United Kingdom</option>
+              <option value="au">Australia</option>
+              <option value="us">Nigeria</option>
+              <option value="de">Germany</option>
+              <option value="fr">France</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="error-message">Please select a country</div>
+          </div>
+          <div class="form-group">
+            <label for="state"
+              >State/Province <span class="required">*</span></label
+            >
+            <select id="state" name="state" required disabled>
+              <option value="">Select State</option>
+            </select>
+            <div class="error-message">Please select a state</div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="btn btn-register">Register</button>
+          <button type="button" class="btn btn-login" onclick="showLoginForm()">
+            Login
+          </button>
+        </div>
+      </form>
+
+      <div class="form-footer">
+        <br />
+        Need help? <a href="#">Contact Support</a>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+      <div class="modal">
+        <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+        <div class="modal-header">
+          <h3>
+            Enter your previous email address to access The Presidential
+            Briefing
+          </h3>
+        </div>
+        <form id="loginForm">
+          <div class="modal-form-group">
+            <label for="loginEmail"
+              >Email Address <span class="required">*</span></label
+            >
+            <input
+              type="email"
+              id="loginEmail"
+              name="loginEmail"
+              placeholder="Enter your email address"
+              required
+            />
+          </div>
+          <div class="modal-buttons">
+            <button type="submit" class="modal-btn modal-btn-login">
+              Access Video
+            </button>
+            <button
+              type="button"
+              class="modal-btn modal-btn-cancel"
+              onclick="closeLoginModal()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
